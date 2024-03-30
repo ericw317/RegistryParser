@@ -1,0 +1,2 @@
+The following libraries will need to be installed:
+python-registry (pip install python-registry)
