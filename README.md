@@ -1,4 +1,4 @@
-This is a work in progress. Currently only works well with SAM hives. More will be added soon.
+This is a work in progress. Currently only works well with SAM and SYSTEM hives. More will be added soon.
 
 What This Does
 --------------
