@@ -66,7 +66,8 @@ class SAMParser:
             user_dict = {"Username": key.name(),
                          "RID": RID,
                          "Name": get_name(RID),
-                         "Internet Username": get_internet_username(RID)}
+                         "Internet Username": get_internet_username(RID),
+                         "Creation Date": key.timestamp()}
             user_data.append(user_dict)
 
         # output the data
@@ -74,5 +75,6 @@ class SAMParser:
             print(f"Username: {users['Username']}\n"
                   f"RID: {users['RID']}\n"
                   f"Name: {users['Name']}\n"
-                  f"Internet Username: {users['Internet Username']}\n")
+                  f"Internet Username: {users['Internet Username']}\n"
+                  f"Creation Date: {users['Creation Date']}\n")
             print("------------------------------\n")

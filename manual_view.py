@@ -30,23 +30,39 @@ class ManualViewer:
                 key_input = input("")
                 if key_input == "back" or key_input == "0":
                     break
-                try:
-                    reg.open(f"{key_path}\\{key_input}")
-                    break
-                except:
-                    print("Invalid input. Try again.\n")
 
+                if key_path != "":
+                    try:
+                        reg.open(f"{key_path}\\{key_input}")
+                        break
+                    except:
+                        print("Invalid input. Try again.\n")
+                elif key_path == "":
+                    try:
+                        reg.open(key_input)
+                        break
+                    except:
+                        print("Invalid input. Try again.\n")
+
+            # logic for going back
             if key_input == "back":
-                if key_path != "SAM":
+                if key_path != "":
                     while True:
-                        if key_path[-1] == "\\":
-                            key_path = key_path[:-1]
+                        try:
+                            if key_path[-1] == "\\":
+                                key_path = key_path[:-1]
+                                break
+                            else:
+                                key_path = key_path[:-1]
+                        except IndexError:
                             break
-                        else:
-                            key_path = key_path[:-1]
                 key = reg.open(key_path)
             elif key_input == "0":
                 break
             else:
-                key_path += f"\\{key_input}"
-                key = reg.open(key_path)
+                if key_path == "":
+                    key_path = f"{key_input}"
+                    key = reg.open(key_path)
+                else:
+                    key_path += f"\\{key_input}"
+                    key = reg.open(key_path)

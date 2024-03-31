@@ -1,22 +1,23 @@
 from Registry import Registry
 from SAM_parser import SAMParser
 from manual_view import ManualViewer
+from SYSTEM_parser import SYSTEMParser
 import sys
 
 # ask user for registry hive type
 registry_type = input("Which type of registry hive are you reading?\n"
                       "1) SAM\n"
+                      "2) SYSTEM\n"
                       "0) Exit\n")
 
 # input validation
-while not registry_type.isnumeric() or int(registry_type) < 0 or int(registry_type) > 1:
-    registry_type = input("Input must be a number between 0-1.\n")
+while not registry_type.isnumeric() or int(registry_type) < 0 or int(registry_type) > 2:
+    registry_type = input("Input must be a number between 0-2.\n")
 
-# set starting path based on hive type
-if int(registry_type) == 1:
-    key_path = "SAM"
-elif int(registry_type) == 0:
+if int(registry_type) == 0:
     sys.exit(0)
+else:
+    key_path = ""
 
 # open the registry hive
 while True:
@@ -44,3 +45,5 @@ if int(operation) == 1:
 elif int(operation) == 2:
     if int(registry_type) == 1:
         SAMParser.SAM_parse(reg)
+    elif int(registry_type) == 2:
+        SYSTEMParser.SYSTEM_parse(reg)
